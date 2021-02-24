@@ -8,6 +8,11 @@ To clone repository with all submodules use following command
 git clone https://github.com/mpenkrat/test-task.git
 ```
 
+### Required installations
+```
+Java 11, Maven 3.6+
+```
+
 ### Build Instruction
 
 To build module with all dependencies use following command
@@ -16,13 +21,11 @@ mvn clean install
 ```
 
 ### Tests
-
 ```
 mvn test
 ```
 
 ### Run locally
-
 ```
 mvn spring-boot:run
 ```
