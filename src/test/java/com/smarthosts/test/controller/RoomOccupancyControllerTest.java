@@ -9,8 +9,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
 @RunWith(SpringRunner.class)
@@ -66,6 +67,28 @@ public class RoomOccupancyControllerTest {
                 .andExpect(content()
                         .json("[{'roomType':'ECONOMY','roomsCount':1,'total':{'amount':45,'currency':'EUR'}}," +
                                 "{'roomType':'PREMIUM','roomsCount':7,'total':{'amount':1153,'currency':'EUR'}}]]"));
+    }
+
+    @Test
+    public void testGetRoomOccupancy_OnlyEconomy() throws Exception {
+        mvc.perform(get("/api/v1/rooms/occupancy?economy=3")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content()
+                        .json("[{'roomType':'ECONOMY','roomsCount':3,'total':{'amount':167,'currency':'EUR'}}]"));
+    }
+
+    @Test
+    public void testGetRoomOccupancy_OnlyPremium() throws Exception {
+        mvc.perform(get("/api/v1/rooms/occupancy?premium=2")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content()
+                        .contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                .andExpect(content()
+                        .json("[{'roomType':'PREMIUM','roomsCount':2,'total':{'amount':583,'currency':'EUR'}}]"));
     }
 }
 
