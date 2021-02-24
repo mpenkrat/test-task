@@ -1,20 +1,34 @@
-# Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+REST API that provides an interface for hotels to enter the numbers of Premium and Economy rooms that are available for the night and then tells them immediately how many rooms of each category will be occupied and how much money they will make in total. Potential guests are represented by an array of numbers that is their willingness to pay for the night.
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.3/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.3/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#production-ready)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.4.3/reference/htmlsingle/#using-boot-devtools)
+### Clone Instruction
 
-### Guides
-The following guides illustrate how to use some features concretely:
+To clone repository with all submodules use following command
+```
+git clone https://github.com/mpenkrat/test-task.git
+```
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+### Build Instruction
+
+To build module with all dependencies use following command
+```
+mvn clean install
+```
+
+### Tests
+
+```
+mvn test
+```
+
+### Run locally
+
+```
+mvn spring-boot:run
+```
+
+Run request via http client (i.e. CURL)
+```
+curl -X GET -H "Cache-Control: no-cache" "http://localhost:8080/api/v1/rooms/occupancy?economy=3&premium=3"
+```
 
