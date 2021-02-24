@@ -68,7 +68,7 @@ public class RoomOccupancyServiceImpl implements RoomOccupancyService {
     }
 
     private Price getTotal(List<GuestBid> bids) {
-        BigDecimal total = bids.stream().map(bid -> bid.getPrice().getTotal()).
+        BigDecimal total = bids.stream().map(bid -> bid.getPrice().getAmount()).
                 reduce(BigDecimal.ZERO, BigDecimal::add);
         return new Price(total, EUR);
     }

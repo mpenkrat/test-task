@@ -8,11 +8,11 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 public class Price implements Comparable<Price>{
-    private BigDecimal total;
+    private BigDecimal amount;
     private Currency currency;
 
     @Override
     public int compareTo(Price price) {
-        return total.compareTo(price.getTotal());
+        return amount.compareTo(price.getAmount());
     }
 }

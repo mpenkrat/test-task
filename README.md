@@ -10,7 +10,7 @@ git clone https://github.com/mpenkrat/test-task.git
 
 ### Required installations
 ```
-Java 11, Maven 3.6+
+JDK 11+, Maven 3.6+
 ```
 
 ### Build Instruction
